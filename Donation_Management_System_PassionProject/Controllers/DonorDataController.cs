@@ -145,7 +145,6 @@ namespace Donation_Management_System_PassionProject.Controllers
             }
             base.Dispose(disposing);
         }
-
         private bool DonorExists(int id)
         {
             return db.Donors.Count(e => e.DonorId == id) > 0;

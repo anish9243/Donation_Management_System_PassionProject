@@ -281,10 +281,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Donor\List.cshtml" />
+    <Content Include="Views\Donor\New.cshtml" />
+    <Content Include="Views\Donor\Edit.cshtml" />
+    <Content Include="Views\Donor\Error.cshtml" />
+    <Content Include="Views\Donor\Details.cshtml" />
+    <Content Include="Views\Donor\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DonorData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

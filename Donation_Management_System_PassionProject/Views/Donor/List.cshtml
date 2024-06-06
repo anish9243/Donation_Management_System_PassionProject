@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Donation_Management_System_PassionProject.Models.DonorDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h2 class="mb-4">Donor List</h2>
+    <a href="/Donor/New" class="btn btn-primary mb-4">Add Donor</a>
+    <div class="list-group">
+        @foreach (var donor in Model)
+        {
+            <div class="list-group-item mb-3">
+                <h3>
+                    <a href="/Donor/Details/@donor.DonorId" class="text-decoration-none">@donor.DonorName</a>
+                </h3>
+                <div>Email: @donor.DonorEmail</div>
+            </div>
+        }
+    </div>
+</div>

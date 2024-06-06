@@ -1,0 +1,23 @@
+﻿@model Donation_Management_System_PassionProject.Models.DonorDto
+
+@{
+    ViewBag.Title = "View";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <a href="/Donor/List" class="btn btn-secondary mb-4">Go back to List</a>
+    <div class="card">
+        <div class="card-header">
+            <h2>@Model.DonorName</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>Email:</strong> @Model.DonorEmail</p>
+            <div class="mt-4">
+                <a href="/Donor/Edit/@Model.DonorId" class="btn btn-primary mr-2">Edit</a>
+                <a href="/Donor/DeleteConfirm/@Model.DonorId" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

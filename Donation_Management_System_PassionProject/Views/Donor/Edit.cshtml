@@ -1,0 +1,25 @@
+﻿@model Donation_Management_System_PassionProject.Models.DonorDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h2>Edit Donor</h2>
+    <form method="POST" action="/Donor/Update/@Model.DonorId" class="mt-4">
+        <input type="hidden" name="DonorId" value="@Model.DonorId" />
+        <div class="form-group">
+            <label for="DonorName">Name</label>
+            <input type="text" class="form-control" id="DonorName" name="DonorName" value="@Model.DonorName" required />
+        </div>
+        <div class="form-group">
+            <label for="DonorEmail">Email</label>
+            <input type="email" class="form-control" id="DonorEmail" name="DonorEmail" value="@Model.DonorEmail" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/Donor/List" class="btn btn-secondary">Cancel</a>
+
+    </form>
+</div>
