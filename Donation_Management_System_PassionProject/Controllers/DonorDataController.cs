@@ -16,7 +16,16 @@ namespace Donation_Management_System_PassionProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/DonorData/ListDonors
+        /// <summary>
+        /// Returns all donors in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all donors in the database.
+        /// </returns>
+        /// <example>
+        /// GET: api/DonorData/ListDonors
+        /// </example>
         [HttpGet]
         [Route("api/DonorData/ListDonors")]
         public IEnumerable<DonorDto> ListDonors()
@@ -34,7 +43,19 @@ namespace Donation_Management_System_PassionProject.Controllers
             return DonorDtos;
         }
 
-        // GET: api/DonorData/FindDonor/5
+        /// <summary>
+        /// Finds a specific donor by ID.
+        /// </summary>
+        /// <param name="id">The ID of the donor.</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: A donor matching the provided ID.
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// GET: api/DonorData/FindDonor/5
+        /// </example>
         [ResponseType(typeof(Donor))]
         [HttpGet]
         [Route("api/DonorData/FindDonor/{id}")]
@@ -56,7 +77,21 @@ namespace Donation_Management_System_PassionProject.Controllers
             return Ok(DonorDto);
         }
 
-        // POST: api/DonorData/UpdateDonor/5
+        /// <summary>
+        /// Updates a donor in the system with POST Data input.
+        /// </summary>
+        /// <param name="id">The ID of the donor to be updated.</param>
+        /// <param name="donor">JSON form data of the donor.</param>
+        /// <returns>
+        /// HEADER: 204 (No Content)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/DonorData/UpdateDonor/5
+        /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/DonorData/UpdateDonor/{id}")]
@@ -102,7 +137,19 @@ namespace Donation_Management_System_PassionProject.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/DonorData/AddDonor
+        /// <summary>
+        /// Adds a new donor to the system.
+        /// </summary>
+        /// <param name="donor">JSON form data of the donor.</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: The created donor data.
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/DonorData/AddDonor
+        /// </example>
         [ResponseType(typeof(Donor))]
         [HttpPost]
         [Route("api/DonorData/AddDonor")]
@@ -119,7 +166,18 @@ namespace Donation_Management_System_PassionProject.Controllers
             return Ok();
         }
 
-        // POST: api/DonorData/DeleteDonor/5
+        /// <summary>
+        /// Deletes a donor from the system by ID.
+        /// </summary>
+        /// <param name="id">The ID of the donor to be deleted.</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST: api/DonorData/DeleteDonor/5
+        /// </example>
         [ResponseType(typeof(Donor))]
         [HttpPost]
         [Route("api/DonorData/DeleteDonor/{id}")]
@@ -145,6 +203,7 @@ namespace Donation_Management_System_PassionProject.Controllers
             }
             base.Dispose(disposing);
         }
+
         private bool DonorExists(int id)
         {
             return db.Donors.Count(e => e.DonorId == id) > 0;

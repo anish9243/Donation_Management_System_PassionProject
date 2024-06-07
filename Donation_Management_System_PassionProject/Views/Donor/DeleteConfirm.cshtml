@@ -15,10 +15,10 @@
             <h3>@Model.DonorName</h3>
             <p><strong>Email:</strong> @Model.DonorEmail</p>
             <div class="mt-4">
-                <a href="/Donor/List" class="btn btn-secondary mr-2">Cancel</a>
                 <form action="/Donor/Delete/@Model.DonorId" method="POST" style="display:inline;">
                     <input type="submit" value="Confirm Delete" class="btn btn-danger" />
                 </form>
+                <a href="/Donor/List" class="btn btn-secondary mr-2">Cancel</a>
             </div>
         </div>
     </div>
