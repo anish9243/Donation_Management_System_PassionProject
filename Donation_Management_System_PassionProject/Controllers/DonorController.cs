@@ -23,6 +23,16 @@ namespace Donation_Management_System_PassionProject.Controllers
             client.BaseAddress = new Uri("https://localhost:44306/api/");
         }
 
+        /// <summary>
+        /// Displays a list of donors.
+        /// </summary>
+        /// <returns>
+        /// The view containing the list of donors.
+        /// </returns>
+        /// <example>
+        /// GET: Donor/List
+        /// </example>
+
         // GET: Donor/List
         public ActionResult List()
         {
@@ -43,6 +53,17 @@ namespace Donation_Management_System_PassionProject.Controllers
 
             return View(donors);
         }
+
+        /// <summary>
+        /// Displays details of a specific donor.
+        /// </summary>
+        /// <param name="id">The ID of the donor to be displayed.</param>
+        /// <returns>
+        /// The view containing details of the specified donor.
+        /// </returns>
+        /// <example>
+        /// GET: Donor/Details/5
+        /// </example>
 
         // GET: Donor/Details/5
         public ActionResult Details(int id)
@@ -69,11 +90,32 @@ namespace Donation_Management_System_PassionProject.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Displays a form for creating a new donor.
+        /// </summary>
+        /// <returns>
+        /// The view containing the form for creating a new donor.
+        /// </returns>
+        /// <example>
+        /// GET: Donor/New
+        /// </example>
+
         // GET: Donor/New
         public ActionResult New()
         {
             return View();
         }
+
+        /// <summary>
+        /// Creates a new donor.
+        /// </summary>
+        /// <param name="donor">The donor to be created.</param>
+        /// <returns>
+        /// Redirects to the list of donors upon successful creation, otherwise redirects to an error page.
+        /// </returns>
+        /// <example>
+        /// POST: Donor/Create
+        /// </example>
 
         // POST: Donor/Create
         [HttpPost]
@@ -101,8 +143,19 @@ namespace Donation_Management_System_PassionProject.Controllers
             {
                 return RedirectToAction("Error");
             }
-
+ 
         }
+
+        /// <summary>
+        /// Displays a form for editing a donor.
+        /// </summary>
+        /// <param name="id">The ID of the donor to be edited.</param>
+        /// <returns>
+        /// The view containing the form for editing the specified donor.
+        /// </returns>
+        /// <example>
+        /// GET: Donor/Edit/5
+        /// </example>
 
         // GET: Donor/Edit/5
         public ActionResult Edit(int id)
@@ -119,6 +172,18 @@ namespace Donation_Management_System_PassionProject.Controllers
 
             return View(selecteddonor);
         }
+
+        /// <summary>
+        /// Updates a donor.
+        /// </summary>
+        /// <param name="id">The ID of the donor to be updated.</param>
+        /// <param name="donor">The updated donor data.</param>
+        /// <returns>
+        /// Redirects to the details page of the updated donor upon successful update, otherwise returns to the edit page.
+        /// </returns>
+        /// <example>
+        /// POST: Donor/Update/5
+        /// </example>
 
         // POST: Donor/Update/5
         [HttpPost]
@@ -156,6 +221,17 @@ namespace Donation_Management_System_PassionProject.Controllers
             }
         }
 
+        /// <summary>
+        /// Displays a confirmation page for deleting a donor.
+        /// </summary>
+        /// <param name="id">The ID of the donor to be deleted.</param>
+        /// <returns>
+        /// The view containing the confirmation message for deleting the specified donor.
+        /// </returns>
+        /// <example>
+        /// GET: Donor/Delete/5
+        /// </example>
+
         // GET: Donor/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
@@ -164,6 +240,17 @@ namespace Donation_Management_System_PassionProject.Controllers
             DonorDto selecteddonor = response.Content.ReadAsAsync<DonorDto>().Result;
             return View(selecteddonor);
         }
+
+        /// <summary>
+        /// Deletes a donor.
+        /// </summary>
+        /// <param name="id">The ID of the donor to be deleted.</param>
+        /// <returns>
+        /// Redirects to the list of donors upon successful deletion, otherwise redirects to an error page.
+        /// </returns>
+        /// <example>
+        /// POST: Donor/Delete/5
+        /// </example>
 
         // POST: Donor/Delete/5
         [HttpPost]
