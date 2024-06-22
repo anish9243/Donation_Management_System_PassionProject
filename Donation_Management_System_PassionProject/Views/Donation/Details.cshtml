@@ -1,0 +1,54 @@
+﻿@model Donation_Management_System_PassionProject.Models.ViewModels.DetailsDonation
+
+@{
+    ViewBag.Title = "View Donation";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Donation By @Model.SelectedDonation.DonorName </h2>
+            <h3>$@Model.SelectedDonation.DonationAmount</h3>
+            <div>Donor: @Model.SelectedDonation.DonorName</div>
+            <div>Campaign: @Model.SelectedDonation.CampaignName</div>
+            <div>Amount: @Model.SelectedDonation.DonationAmount</div>
+            <div>Date: @Model.SelectedDonation.DonationDate.ToString("yyyy-MM-dd")</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Associated Donors and Campaigns</h2>
+            <h4>Add new Donor or Campaign to this Donation</h4>
+            <form method="POST" action="/Donation/Associate/@Model.SelectedDonation.DonationId">
+                <div class="form-group">
+                    <label for="DonorID">Donor:</label>
+                    <select name="DonorID" id="DonorID" class="form-control">
+                        @foreach (var donor in Model.AvailableDonors)
+                        {
+                            <option value="@donor.DonorId">@donor.DonorName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="CampaignID">Campaign:</label>
+                    <select name="CampaignID" id="CampaignID" class="form-control">
+                        @foreach (var campaign in Model.AvailableCampaigns)
+                        {
+                            <option value="@campaign.CampaignId">@campaign.CampaignName</option>
+                        }
+                    </select>
+                </div>
+                <input type="submit" value="Associate Donor/Campaign" class="mb-2 btn btn-success" />
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/Donation/List" class="btn btn-secondary mb-3">Go back to list</a>
+            <a href="/Donation/Edit/@Model.SelectedDonation.DonationId" class="btn btn-primary mb-3">Update</a>
+            <a href="/Donation/DeleteConfirm/@Model.SelectedDonation.DonationId" class="btn btn-danger mb-3">Delete</a>
+        </div>
+    </div>
+</div>

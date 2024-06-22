@@ -1,0 +1,24 @@
+﻿@model Donation_Management_System_PassionProject.Models.CampaignDto
+
+@{
+    ViewBag.Title = "Edit Campaign";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h2>Edit Campaign</h2>
+    <form method="POST" action="/Campaign/Update/@Model.CampaignId" class="mt-4">
+        <input type="hidden" name="CampaignId" value="@Model.CampaignId" />
+        <div class="form-group">
+            <label for="CampaignName">Name</label>
+            <input type="text" class="form-control" id="CampaignName" name="CampaignName" value="@Model.CampaignName" required />
+        </div>
+        <div class="form-group">
+            <label for="CampaignDescription">Description</label>
+            <textarea class="form-control" id="CampaignDescription" name="CampaignDescription" required>@Model.CampaignDescription</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/Campaign/List" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

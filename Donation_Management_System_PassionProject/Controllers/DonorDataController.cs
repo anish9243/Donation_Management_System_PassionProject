@@ -59,22 +59,30 @@ namespace Donation_Management_System_PassionProject.Controllers
         [ResponseType(typeof(Donor))]
         [HttpGet]
         [Route("api/DonorData/FindDonor/{id}")]
+        
         public IHttpActionResult FindDonor(int id)
         {
-            Donor Donor = db.Donors.Find(id);
-            if (Donor == null)
+            Donor donor = db.Donors.Include(d => d.Donations).FirstOrDefault(d => d.DonorId == id);
+            if (donor == null)
             {
                 return NotFound();
             }
 
-            DonorDto DonorDto = new DonorDto()
+            DonorDto donorDto = new DonorDto()
             {
-                DonorId = Donor.DonorId,
-                DonorName = Donor.DonorName,
-                DonorEmail = Donor.DonorEmail
+                DonorId = donor.DonorId,
+                DonorName = donor.DonorName,
+                DonorEmail = donor.DonorEmail,
+                Donations = donor.Donations.Select(d => new DonationDto
+                {
+                    DonationId = d.DonationId,
+                    DonationAmount = d.DonationAmount,
+                    CampaignName = d.Campaign.CampaignName,
+                    DonationDate = d.DonationDate
+                }).ToList()
             };
 
-            return Ok(DonorDto);
+            return Ok(donorDto);
         }
 
         /// <summary>

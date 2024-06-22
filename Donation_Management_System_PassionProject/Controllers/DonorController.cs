@@ -37,7 +37,7 @@ namespace Donation_Management_System_PassionProject.Controllers
         public ActionResult List()
         {
             //objective: communicate with our donor data api to retrieve a list of donors
-            //curl https://localhost:44324/api/donordata/listdonors
+            //curl https://localhost:44306/api/donordata/listdonors
 
 
             string url = "donordata/listdonors";
@@ -68,19 +68,23 @@ namespace Donation_Management_System_PassionProject.Controllers
         // GET: Donor/Details/5
         public ActionResult Details(int id)
         {
-
-            string url = "donordata/finddonor/" + id;
+            string url = "DonorData/FindDonor/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            Debug.WriteLine("The response code is ");
-            Debug.WriteLine(response.StatusCode);
-
-            DonorDto selecteddonor = response.Content.ReadAsAsync<DonorDto>().Result;
-            Debug.WriteLine("donor received : ");
-            Debug.WriteLine(selecteddonor.DonorName);
-
-
-            return View(selecteddonor);
+            if (response.IsSuccessStatusCode)
+            {
+                DonorDto donor = response.Content.ReadAsAsync<DonorDto>().Result;
+                return View(donor);
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
+            else
+            {
+                Debug.WriteLine("Failed to retrieve donor details. Error: " + response.StatusCode);
+                return View("Error");
+            }
         }
 
 
@@ -124,7 +128,7 @@ namespace Donation_Management_System_PassionProject.Controllers
             Debug.WriteLine("the json payload is :");
             //Debug.WriteLine(donor.DonorName);
             //objective: add a new donor into our system using the API
-            //curl -H "Content-Type:application/json" -d @donor.json https://localhost:44324/api/donordata/adddonor 
+            //curl -H "Content-Type:application/json" -d @donor.json https://localhost:44306/api/donordata/adddonor 
             string url = "donordata/adddonor";
 
 

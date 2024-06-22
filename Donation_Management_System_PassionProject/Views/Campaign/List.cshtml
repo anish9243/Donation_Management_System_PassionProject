@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Donation_Management_System_PassionProject.Models.CampaignDto>
+
+@{
+    ViewBag.Title = "Campaign List";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h1 class="text-center mb-3">Campaign List</h1>
+    <nav class="nav justify-content-center mb-4">
+        <a class="btn btn-dark m-1" href="/Donor/List">Donor</a>
+        <a class="btn btn-dark m-1" href="/Campaign/List">Campaigns</a>
+        <a class="btn btn-dark m-1" href="/Donation/List">Donations</a>
+    </nav>
+
+    <h2 class="mb-4">Campaign List</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var campaign in Model)
+            {
+                <tr>
+                    <td>@campaign.CampaignId</td>
+                    <td>@campaign.CampaignName</td>
+                    <td>@campaign.CampaignDescription</td>
+                    <td>
+                        <a href="/Campaign/Details/@campaign.CampaignId" class="btn btn-info btn-sm">Details</a>
+                        <a href="/Campaign/Edit/@campaign.CampaignId" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Campaign/DeleteConfirm/@campaign.CampaignId" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Campaign/New" class="btn btn-primary mt-3">Add New Campaign</a>
+</div>

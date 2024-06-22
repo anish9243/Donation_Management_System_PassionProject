@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Donation_Management_System_PassionProject.Models.DonationDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h1 class="text-center mb-3">Donation Management System</h1>
+    <nav class="nav justify-content-center mb-4">
+        <a class="btn btn-dark m-1" href="/Donor/List">Donors</a>
+        <a class="btn btn-dark m-1" href="/Campaign/List">Campaigns</a>
+        <a class="btn btn-dark m-1" href="/Donation/List">Donations</a>
+    </nav>
+
+    <h2 class="mb-4">Donation List</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Donor</th>
+                <th>Campaign</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var donation in Model)
+            {
+                <tr>
+                    <td>@donation.DonationId</td>
+                    <td>@donation.DonorName</td>
+                    <td>@donation.CampaignName</td>
+                    <td>@donation.DonationAmount.ToString("C")</td>
+                    <td>@donation.DonationDate.ToShortDateString()</td>
+                    <td>
+                        <a href="/Donation/Details/@donation.DonationId" class="btn btn-info btn-sm">Details</a>
+                        <a href="/Donation/Edit/@donation.DonationId" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Donation/DeleteConfirm/@donation.DonationId" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Donation/New" class="btn btn-primary mt-3">Add New Donation</a>
+</div>

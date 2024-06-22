@@ -1,22 +1,22 @@
-﻿@model Donation_Management_System_PassionProject.Models.DonorDto
+﻿@model Donation_Management_System_PassionProject.Models.CampaignDto
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Campaign Details";
 }
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 
 <div class="container mt-5">
-    <a href="/Donor/List" class="btn btn-secondary mb-4">Go back to List</a>
+    <a href="/Campaign/List" class="btn btn-secondary mb-4">Go back to List</a>
     <div class="card">
         <div class="card-header">
-            <h2>@Model.DonorName</h2>
+            <h2>@Model.CampaignName</h2>
         </div>
         <div class="card-body">
-            <p><strong>Email:</strong> @Model.DonorEmail</p>
+            <p><strong>Description:</strong> @Model.CampaignDescription</p>
             <div class="mt-4">
-                <a href="/Donor/Edit/@Model.DonorId" class="btn btn-warning mr-2">Edit</a>
-                <a href="/Donor/DeleteConfirm/@Model.DonorId" class="btn btn-danger">Delete</a>
+                <a href="/Campaign/Edit/@Model.CampaignId" class="btn btn-warning mr-2">Edit</a>
+                <a href="/Campaign/DeleteConfirm/@Model.CampaignId" class="btn btn-danger">Delete</a>
             </div>
             <h3 class="mt-4">Donations</h3>
             @if (Model.Donations != null && Model.Donations.Any())
@@ -26,7 +26,7 @@
                         <tr>
                             <th>Donation ID</th>
                             <th>Amount</th>
-                            <th>Campaign</th>
+                            <th>Donor</th>
                             <th>Date</th>
                         </tr>
                     </thead>
@@ -36,7 +36,7 @@
                             <tr>
                                 <td>@donation.DonationId</td>
                                 <td>@donation.DonationAmount.ToString("C")</td>
-                                <td>@donation.CampaignName</td>
+                                <td>@donation.DonorName</td>
                                 <td>@donation.DonationDate.ToString("dd MMM yyyy")</td>
                             </tr>
                         }
@@ -45,7 +45,7 @@
             }
             else
             {
-                <p>No donations found for this donor.</p>
+                <p>No donations found for this campaign.</p>
             }
         </div>
     </div>

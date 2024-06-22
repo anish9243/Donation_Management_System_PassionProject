@@ -1,0 +1,23 @@
+﻿@model Donation_Management_System_PassionProject.Models.CampaignDto
+
+@{
+    ViewBag.Title = "New Campaign";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h2>Add Campaign</h2>
+    <form action="/Campaign/Create" method="POST" class="mt-4">
+        <div class="form-group">
+            <label for="CampaignName">Name:</label>
+            <input type="text" class="form-control" id="CampaignName" name="CampaignName" required />
+        </div>
+        <div class="form-group">
+            <label for="CampaignDescription">Description:</label>
+            <textarea class="form-control" id="CampaignDescription" name="CampaignDescription" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Campaign</button>
+        <a href="/Campaign/List" class="btn btn-secondary">Go back to List</a>
+    </form>
+</div>

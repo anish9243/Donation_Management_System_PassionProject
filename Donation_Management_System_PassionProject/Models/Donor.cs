@@ -25,6 +25,9 @@ namespace Donation_Management_System_PassionProject.Models
             public string DonorName { get; set; }
             public string DonorEmail { get; set; }
 
-            // Additional properties if needed
-        }
+        // Additional properties if needed
+        // Add a list of donations
+        public ICollection<DonationDto> Donations { get; set; }
+
+    }
 }

@@ -25,4 +25,18 @@ namespace Donation_Management_System_PassionProject.Models
         public int CampaignId { get; set; }  // Foreign key to Campaign
         public virtual Campaign Campaign { get; set; }  // Navigation property to Campaign
     }
+
+    public class DonationDto
+    {
+        public int DonationId { get; set; }
+        public decimal DonationAmount { get; set; }
+        public DateTime DonationDate { get; set; }
+
+        // Additional properties for navigation purposes
+        public int DonorId { get; set; }
+        public string DonorName { get; set; }  // Including DonorName for easier display in views
+        public int CampaignId { get; set; }
+        public string CampaignName { get; set; }  // Including CampaignName for easier display in views
+    }
+
 }

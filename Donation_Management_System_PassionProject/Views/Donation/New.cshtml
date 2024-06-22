@@ -1,0 +1,49 @@
+﻿@model Donation_Management_System_PassionProject.Models.ViewModels.NewDonation
+
+@{
+    ViewBag.Title = "Create Donation";
+}
+
+<h2>Create Donation</h2>
+<form action="/Donation/Create" method="POST" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-2 control-label">Donor:</label>
+        <div class="col-md-10">
+            <select name="DonorID" class="form-control">
+                @foreach (var donor in Model.DonorOptions)
+                {
+                    <option value="@donor.DonorId">@donor.DonorName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Campaign:</label>
+        <div class="col-md-10">
+            <select name="CampaignID" class="form-control">
+                @foreach (var campaign in Model.CampaignOptions)
+                {
+                    <option value="@campaign.CampaignId">@campaign.CampaignName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Donation Amount:</label>
+        <div class="col-md-10">
+            <input type="number" name="DonationAmount" step="0.01" class="form-control" placeholder="Enter donation amount" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Donation Date:</label>
+        <div class="col-md-10">
+            <input type="date" name="DonationDate" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add Donation" class="btn btn-primary" />
+            <a href="/Donation/List" class="btn btn-secondary">Go back to List</a>
+        </div>
+    </div>
+</form>

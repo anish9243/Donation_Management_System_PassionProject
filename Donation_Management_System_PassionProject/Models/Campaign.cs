@@ -18,4 +18,15 @@ namespace Donation_Management_System_PassionProject.Models
         // Many to Many Realtion property for related donations
         public virtual ICollection<Donation> Donations { get; set; }
     }
-}
+        public class CampaignDto
+        {
+            public int CampaignId { get; set; }
+            public string CampaignName { get; set; }
+            public string CampaignDescription { get; set; }
+
+
+        // Additional properties if needed\
+        public ICollection<DonationDto> Donations { get; set; }
+        public int DonorId { get; internal set; }
+    }
+    }

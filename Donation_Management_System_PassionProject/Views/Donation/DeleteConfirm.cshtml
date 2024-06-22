@@ -1,0 +1,28 @@
+﻿@model Donation_Management_System_PassionProject.Models.DonationDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>Are you sure you want to delete this Donation?</h2>
+        </div>
+        <div class="card-body">
+            <h3>Donation ID: @Model.DonationId</h3>
+            <p><strong>Donor Name:</strong> @Model.DonorName</p>
+            <p><strong>Campaign Name:</strong> @Model.CampaignName</p>
+            <p><strong>Amount:</strong> @Model.DonationAmount.ToString("C")</p>
+            <p><strong>Date:</strong> @Model.DonationDate.ToShortDateString()</p>
+            <div class="mt-4">
+                <form action="/Donation/Delete/@Model.DonationId" method="POST" style="display:inline;">
+                    <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+                </form>
+                <a href="/Donation/List" class="btn btn-secondary mr-2">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
