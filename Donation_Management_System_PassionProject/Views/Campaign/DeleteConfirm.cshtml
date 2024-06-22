@@ -18,6 +18,14 @@
                 <label class="control-label">Description:</label>
                 <p class="form-control-static">@Model.CampaignDescription</p>
             </div>
+            <div class="form-group">
+                <label for="CampaignStartDate">Start Date:</label>
+                <p class="form-control-static">@Model.CampaignStartDate</p>
+            </div>
+            <div class="form-group">
+                <label for="CampaignEndDate">Start Date:</label>
+                <p class="form-control-static">@Model.CampaignEndDate</p>
+            </div>
             <p>Are you sure you want to delete this campaign?</p>
             <form action="/Campaign/Delete/@Model.CampaignId" method="POST" style="display:inline;">
                 <input type="submit" value="Confirm Delete" class="btn btn-danger" />

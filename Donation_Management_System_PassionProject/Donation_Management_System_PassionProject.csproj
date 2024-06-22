@@ -201,6 +201,10 @@
     <Compile Include="Migrations\202406051656249_Initial_Migration.Designer.cs">
       <DependentUpon>202406051656249_Initial_Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202406220154165_AddCampaignDates.cs" />
+    <Compile Include="Migrations\202406220154165_AddCampaignDates.Designer.cs">
+      <DependentUpon>202406220154165_AddCampaignDates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Campaign.cs" />
@@ -341,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202406051656249_Initial_Migration.resx">
       <DependentUpon>202406051656249_Initial_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406220154165_AddCampaignDates.resx">
+      <DependentUpon>202406220154165_AddCampaignDates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -38,6 +38,8 @@ namespace Donation_Management_System_PassionProject.Controllers
                 CampaignId = c.CampaignId,
                 CampaignName = c.CampaignName,
                 CampaignDescription = c.CampaignDescription,
+                CampaignStartDate = c.CampaignStartDate,
+                CampaignEndDate = c.CampaignEndDate,
             }));
 
             return campaignDtos;
@@ -73,6 +75,8 @@ namespace Donation_Management_System_PassionProject.Controllers
                 CampaignId = campaign.CampaignId,
                 CampaignName = campaign.CampaignName,
                 CampaignDescription = campaign.CampaignDescription,
+                CampaignStartDate = campaign.CampaignStartDate,
+                CampaignEndDate = campaign.CampaignEndDate,
                 Donations = campaign.Donations.Select(d => new DonationDto
                 {
                     DonationId = d.DonationId,
@@ -104,6 +108,7 @@ namespace Donation_Management_System_PassionProject.Controllers
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/CampaignData/UpdateCampaign/{id}")]
+        [Authorize]
         public IHttpActionResult UpdateCampaign(int id, Campaign campaign)
         {
             if (!ModelState.IsValid)
@@ -153,6 +158,7 @@ namespace Donation_Management_System_PassionProject.Controllers
         [ResponseType(typeof(Campaign))]
         [HttpPost]
         [Route("api/CampaignData/AddCampaign")]
+        [Authorize]
         public IHttpActionResult AddCampaign(Campaign campaign)
         {
             if (!ModelState.IsValid)
@@ -181,7 +187,7 @@ namespace Donation_Management_System_PassionProject.Controllers
         [ResponseType(typeof(Campaign))]
         [HttpPost]
         [Route("api/CampaignData/DeleteCampaign/{id}")]
-
+        [Authorize]
         public IHttpActionResult DeleteCampaign(int id)
         {
             Campaign campaign = db.Campaigns.Find(id);

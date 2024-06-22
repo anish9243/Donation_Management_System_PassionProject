@@ -15,6 +15,10 @@ namespace Donation_Management_System_PassionProject.Models
 
         public string CampaignDescription { get; set; }
 
+        public DateTime CampaignStartDate { get; set; }
+
+        public DateTime CampaignEndDate { get; set; }
+
         // Many to Many Realtion property for related donations
         public virtual ICollection<Donation> Donations { get; set; }
     }
@@ -23,6 +27,8 @@ namespace Donation_Management_System_PassionProject.Models
             public int CampaignId { get; set; }
             public string CampaignName { get; set; }
             public string CampaignDescription { get; set; }
+            public DateTime CampaignStartDate { get; set; }
+            public DateTime CampaignEndDate { get; set; }
 
 
         // Additional properties if needed\

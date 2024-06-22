@@ -10,12 +10,28 @@
     <h2>Add Campaign</h2>
     <form action="/Campaign/Create" method="POST" class="mt-4">
         <div class="form-group">
-            <label for="CampaignName">Name:</label>
-            <input type="text" class="form-control" id="CampaignName" name="CampaignName" required />
+            <label class="col-md-2 control-label" for="CampaignName">Name:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="CampaignName" name="CampaignName" required />
+            </div>
         </div>
         <div class="form-group">
-            <label for="CampaignDescription">Description:</label>
-            <textarea class="form-control" id="CampaignDescription" name="CampaignDescription" required></textarea>
+            <label class="col-md-2 control-label" for="CampaignDescription">Description:</label>
+            <div class="col-md-10">
+                <textarea class="form-control" id="CampaignDescription" name="CampaignDescription" required></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Start Date:</label>
+            <div class="col-md-10">
+                <input type="date" name="CampaignStartDate" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">End Date:</label>
+            <div class="col-md-10">
+                <input type="date" name="CampaignEndDate" class="form-control" />
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Add Campaign</button>
         <a href="/Campaign/List" class="btn btn-secondary">Go back to List</a>

@@ -103,6 +103,7 @@ namespace Donation_Management_System_PassionProject.Controllers
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/DonorData/UpdateDonor/{id}")]
+        [Authorize]
         public IHttpActionResult UpdateDonor(int id, Donor donor)
         {
             Debug.WriteLine("I have reached the update donor method!");
@@ -161,6 +162,7 @@ namespace Donation_Management_System_PassionProject.Controllers
         [ResponseType(typeof(Donor))]
         [HttpPost]
         [Route("api/DonorData/AddDonor")]
+        [Authorize]
         public IHttpActionResult AddDonor(Donor donor)
         {
             if (!ModelState.IsValid)
@@ -189,6 +191,7 @@ namespace Donation_Management_System_PassionProject.Controllers
         [ResponseType(typeof(Donor))]
         [HttpPost]
         [Route("api/DonorData/DeleteDonor/{id}")]
+        [Authorize]
         public IHttpActionResult DeleteDonor(int id)
         {
             Donor donor = db.Donors.Find(id);
